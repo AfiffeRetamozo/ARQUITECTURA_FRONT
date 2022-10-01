@@ -1,0 +1,209 @@
+<div class="container align-items-center">
+  <div class="row align-items-center">
+    <div class="col-xs-10 col-lg-5 card px-2 ">
+      <div class="card-body text-center">
+        <h2 class="my-2">ABC Monitoring</h2>
+      </div>
+    </div>
+
+    <div class="col-xs-10 col-lg-5 container">
+      <div class="row">
+
+        <div class="my-2 row">
+          <h1 class="text-center">Registro</h1>
+        </div>
+
+        <form [formGroup]="usuarioForm" (ngSubmit)="registrarUsuario()">
+
+          
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="nombre" class="col-lg-3 col-form-label">Nombre</label>
+              <div class="col-lg-9">
+                <input formControlName="nombre" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('nombre')?.hasError('required') && usuarioForm.get('nombre')?.touched">
+              Debe ingresar un Nombre para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('nombre')?.hasError('maxlength')">
+              El Nombre no debe exceder los 50 carácteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="apellido" class="col-lg-3 col-form-label">Apellido</label>
+              <div class="col-lg-9">
+                <input formControlName="apellido" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('apellido')?.hasError('required') && usuarioForm.get('apellido')?.touched">
+              Debe ingresar un Apellido para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('apellido')?.hasError('maxlength')">
+              El Apellido no debe exceder los 50 carácteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="cedula" class="col-lg-3 col-form-label">Cedula</label>
+              <div class="col-lg-9">
+                <input formControlName="cedula" type="number" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('cedula')?.hasError('required') && usuarioForm.get('cedula')?.touched">
+              Debe ingresar una Cedula para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('cedula')?.hasError('maxlength')">
+              La Cedula no debe exceder los 20 carácteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="telefono" class="col-lg-3 col-form-label">Telefono</label>
+              <div class="col-lg-9">
+                <input formControlName="telefono" type="number" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('telefono')?.hasError('required') && usuarioForm.get('telefono')?.touched">
+              Debe ingresar un Telefono para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('telefono')?.hasError('maxlength')">
+              El Telefono no debe exceder los 12 carácteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="email" class="col-lg-3 col-form-label">Email</label>
+              <div class="col-lg-9">
+                <input formControlName="email" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('email')?.hasError('required') && usuarioForm.get('email')?.touched">
+              Debe ingresar un Email para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('email')?.hasError('maxlength')">
+              El Email no debe exceder los 50 carácteres
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('email')?.hasError('pattern')">
+              El Email debe ser valido
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="genero" class="col-lg-3 col-form-label">Genero</label>
+              <div class="col-lg-9">
+                <select name="genero" formControlName="genero" class="form-control">
+                  <option value="">---Seleccione un genero---</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('genero')?.hasError('required') && usuarioForm.get('genero')?.touched">
+              Debe ingresar un Genero para registrarse
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="direccion" class="col-lg-3 col-form-label">Dirección</label>
+              <div class="col-lg-9">
+                <input formControlName="direccion" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('direccion')?.hasError('required') && usuarioForm.get('direccion')?.touched">
+              Debe ingresar un Dirección para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('direccion')?.hasError('maxlength')">
+              El Dirección no debe exceder los 80 carácteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="usuario" class="col-lg-3 col-form-label">Usuario</label>
+              <div class="col-lg-9  ">
+                <input formControlName="usuario" type="text" class="form-control" placeholder="Usuario">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('usuario')?.hasError('required') && usuarioForm.get('usuario')?.touched">
+              Debe ingresar un usuario para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('usuario')?.hasError('maxlength')">
+              El usuario no debe exceder los 50 carácteres
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="password" class="col-lg-3 col-form-label">Contraseña</label>
+              <div class="col-lg-9">
+                <input formControlName="password" type="password" class="form-control" placeholder="*********">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('password')?.hasError('required') && usuarioForm.get('password')?.touched">
+              Debe ingresar una contraseña para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('password')?.hasError('maxlength')">
+              La contraseña no debe exceder los 50 carácteres
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('password')?.hasError('minlength')">
+              La contraseña debe tener más de 4 carácteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="confirmPassword" class="col-lg-3 col-form-label">Confirmar contraseña</label>
+              <div class="col-lg-9">
+                <input formControlName="confirmPassword" type="password" class="form-control" placeholder="*********">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('confirmPassword')?.hasError('required') && usuarioForm.get('confirmPassword')?.touched">
+              Debe ingresar una contraseña para registrarse
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('confirmPassword')?.hasError('maxlength')">
+              La contraseña no debe exceder los 50 carácteres
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('confirmPassword')?.hasError('minlength')">
+              La contraseña debe tener más de 4 carácteres
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">
+              Las contraseñas no coinciden
+            </div>
+          </div>
+
+          <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-warning col-8"
+              [disabled]="!usuarioForm.valid || usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">Registrarse</button>
+          </div>
+          <div class="col-12 text-center mt-2">
+            <p>¿Ya tienes cuenta? <a href="/">Inicia sesión</a></p>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="card mx-3 my-5">
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="mt-5 mb-2 fs-3 fw-bold">Hacer transaccion</p>
+          </div>
+        </div>
+        <form
+          class="mx-5 my-3"
+          [formGroup]="transaccionForm"
+          (ngSubmit)="enviarTransaccion(transaccionForm.value)"
+        >
+          <div class="form-group my-2">
+            <div class="row">
+              <div class="col-2 text-start">
+                <label for="valor">Valor a recargar</label>
+              </div>
+              <div class="col-10">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="valor_transacion"
+                  placeholder="Valor de trasaccion"
+                />
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div
+                  class="alert alert-danger my-3"
+                  *ngIf="
+                    transaccionForm.get('valor_transacion')?.hasError('required') &&
+                    transaccionForm.get('valor_transacion')?.touched
+                  "
+                >
+                  Debe ingresar un Valor para la Transaccion
+                </div>
+                <div
+                  class="alert alert-danger my-3"
+                  *ngIf="transaccionForm.get('valor_transacion')?.hasError('minlength')"
+                >
+                  El valor debe tener por lo menos dos carácter
+                </div>
+                <div
+                  class="alert alert-danger my-3"
+                  *ngIf="transaccionForm.get('valor_transacion')?.hasError('maxlength')"
+                >
+                  El valor no debe exceder los 50 carácteres
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="tipo_transaccion" class="col-lg-3 col-form-label">Tipo de pago</label>
+              <div class="col-lg-9">
+                <select name="tipo_transaccion" formControlName="tipo_transaccion" class="form-control">
+                  <option value="">---Seleccione un modo de pago---</option>
+                  <option value="Ahorro">Ahorro</option>
+                  <option value="Credito">Credito</option>
+                </select>
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="transaccionForm.get('tipo_transaccion')?.hasError('required') && transaccionForm.get('tipo_transaccion')?.touched">
+              Debe ingresar un Tipo de pago para registrarse
+            </div>
+          </div>
+
+          <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-warning col-8"
+              [disabled]="!transaccionForm.valid">Recargar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

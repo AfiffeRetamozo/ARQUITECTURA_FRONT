@@ -1,0 +1,122 @@
+<app-header></app-header>
+<div class="container align-items-center">
+  <div class="row align-items-center">
+    <div class="col-xs-10 col-lg-5 container">
+      <div class="row">
+
+        <div class="my-2 row">
+          <h1 class="text-center">Editar mis Datos</h1>
+        </div>
+        <form [formGroup]="usuarioForm" (ngSubmit)="editarUsuario(usuarioForm.value)">
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="nombre" class="col-lg-3 col-form-label">Nombre</label>
+              <div class="col-lg-9">
+                <input formControlName="nombre" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('nombre')?.hasError('required') && usuarioForm.get('nombre')?.touched">
+              Debe ingresar un Nombre
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('nombre')?.hasError('maxlength')">
+              El Nombre no debe exceder los 50 carácteres
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="apellido" class="col-lg-3 col-form-label">Apellido</label>
+              <div class="col-lg-9">
+                <input formControlName="apellido" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('apellido')?.hasError('required') && usuarioForm.get('apellido')?.touched">
+              Debe ingresar un Apellido
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('apellido')?.hasError('maxlength')">
+              El Apellido no debe exceder los 50 carácteres
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="saldo" class="col-lg-3 col-form-label">Saldo</label>
+              <div class="col-lg-9">
+                <input readonly formControlName="saldo" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="telefono" class="col-lg-3 col-form-label">Telefono</label>
+              <div class="col-lg-9">
+                <input formControlName="telefono" type="number" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('telefono')?.hasError('required') && usuarioForm.get('telefono')?.touched">
+              Debe ingresar un Telefono
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('telefono')?.hasError('maxlength')">
+              El Telefono no debe exceder los 12 carácteres
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="email" class="col-lg-3 col-form-label">Email</label>
+              <div class="col-lg-9">
+                <input formControlName="email" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('email')?.hasError('required') && usuarioForm.get('email')?.touched">
+              Debe ingresar un Email
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('email')?.hasError('maxlength')">
+              El Email no debe exceder los 50 carácteres
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('email')?.hasError('pattern')">
+              El Email debe ser valido
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="genero" class="col-lg-3 col-form-label">Genero</label>
+              <div class="col-lg-9">
+                <select name="genero" formControlName="genero" class="form-control">
+                  <option value="">---Seleccione un genero---</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('genero')?.hasError('required') && usuarioForm.get('genero')?.touched">
+              Debe ingresar un Genero
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3 row">
+              <label for="direccion" class="col-lg-3 col-form-label">Dirección</label>
+              <div class="col-lg-9">
+                <input formControlName="direccion" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="alert alert-danger my-3"
+              *ngIf="usuarioForm.get('direccion')?.hasError('required') && usuarioForm.get('direccion')?.touched">
+              Debe ingresar un Dirección
+            </div>
+            <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('direccion')?.hasError('maxlength')">
+              El Dirección no debe exceder los 80 carácteres
+            </div>
+          </div>
+          <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-warning col-8"
+              [disabled]="!usuarioForm.valid">Actualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
